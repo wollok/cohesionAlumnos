@@ -1,0 +1,31 @@
+import fixture.*
+
+test "un alumno estudioso estudia siempre" {
+	const estudioso = fixture.estudioso()
+	const parcial = fixture.parcialFacil() 
+	assert.that(estudioso.estudiaPara(parcial))
+}
+
+test "un alumno vago no estudia si le fue bien" {
+	const vago = fixture.vagoQueLeFueBien()
+	const parcial = fixture.parcialFacil() 
+	assert.notThat(vago.estudiaPara(parcial))
+}
+
+test "un alumno vago estudia si le fue mal" {
+	const vago = fixture.vagoQueLeFueMal()
+	const parcial = fixture.parcialFacil() 
+	assert.that(vago.estudiaPara(parcial))
+}
+
+test "un alumno hijo del rigor no estudia para un parcial facil" {
+	const hijo = fixture.hijoDelRigor()
+	const parcial = fixture.parcialFacil() 
+	assert.notThat(hijo.estudiaPara(parcial))
+}
+
+test "un alumno hijo del rigor estudia para un parcial dificil" {
+	const hijo = fixture.vagoQueLeFueMal()
+	const parcial = fixture.parcialDificil() 
+	assert.that(hijo.estudiaPara(parcial))
+}
