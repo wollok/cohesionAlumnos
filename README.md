@@ -1,6 +1,6 @@
-# Monedero (Excepciones)
+# Alumnos
 
-<img src="img/alumnoNerd.jpg" height="150" width="150">
+<img src="img/student.png" height="150" width="150">
 
 Tenemos diferentes tipos de alumno
 * los estudiosos como los de la foto, que siempre estudian
