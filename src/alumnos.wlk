@@ -24,7 +24,7 @@ class Alumno {
 	
 	method estudiaPara(_parcial) = criterioParaEstudiar.estudiaPara(_parcial, self)
 	
-	method notaUltimoExamen() = notas.get(notas.size() - 1)
+	method notaUltimoExamen() = notas.last()
 }
 
 class Parcial {
