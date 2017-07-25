@@ -1,31 +1,46 @@
-import fixture.*
+import alumnos.*
 
-test "un alumno estudioso estudia siempre" {
-	const estudioso = fixture.estudioso()
-	const parcial = fixture.parcialFacil() 
-	assert.that(estudioso.estudiaPara(parcial))
-}
+describe "tests sobre alumnos" {
+	var estudioso
+	var vagoQueLeFueBien
+	var vagoQueLeFueMal
+	var hijoDelRigor
+	var parcialFacil
+	var parcialDificil
 
-test "un alumno vago no estudia si le fue bien" {
-	const vago = fixture.vagoQueLeFueBien()
-	const parcial = fixture.parcialFacil() 
-	assert.notThat(vago.estudiaPara(parcial))
-}
+	fixture {
+		estudioso = new Alumno() vagoQueLeFueBien = new Alumno()
+		vagoQueLeFueBien.criterioParaEstudiar(new Vago())
+		vagoQueLeFueBien.rendir(9)
 
-test "un alumno vago estudia si le fue mal" {
-	const vago = fixture.vagoQueLeFueMal()
-	const parcial = fixture.parcialFacil() 
-	assert.that(vago.estudiaPara(parcial))
-}
+		vagoQueLeFueMal = new Alumno()
+		vagoQueLeFueMal.criterioParaEstudiar(new Vago())
+		vagoQueLeFueMal.rendir(2)
 
-test "un alumno hijo del rigor no estudia para un parcial facil" {
-	const hijo = fixture.hijoDelRigor()
-	const parcial = fixture.parcialFacil() 
-	assert.notThat(hijo.estudiaPara(parcial))
-}
+		hijoDelRigor = new Alumno()
+		hijoDelRigor.criterioParaEstudiar(new HijoDelRigor())
 
-test "un alumno hijo del rigor estudia para un parcial dificil" {
-	const hijo = fixture.vagoQueLeFueMal()
-	const parcial = fixture.parcialDificil() 
-	assert.that(hijo.estudiaPara(parcial))
+		parcialFacil = new Parcial(3) parcialDificil = new Parcial(8)
+	}
+
+	test "un alumno estudioso estudia siempre" {
+		assert.that(estudioso.estudiaPara(parcialFacil))
+	}
+
+	test "un alumno vago no estudia si le fue bien" {
+		assert.notThat(vagoQueLeFueBien.estudiaPara(parcialDificil))
+	}
+
+	test "un alumno vago estudia si le fue mal" {
+		assert.that(vagoQueLeFueMal.estudiaPara(parcialFacil))
+	}
+
+	test "un alumno hijo del rigor no estudia para un parcial facil" {
+		assert.notThat(hijoDelRigor.estudiaPara(parcialFacil))
+	}
+
+	test "un alumno hijo del rigor estudia para un parcial dificil" {
+		assert.that(hijoDelRigor.estudiaPara(parcialDificil))
+	}
+
 }
