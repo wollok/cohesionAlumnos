@@ -1,6 +1,7 @@
 import alumnos.*
 
 describe "tests sobre alumnos" {
+	
 	var estudioso
 	var vagoQueLeFueBien
 	var vagoQueLeFueMal
@@ -9,18 +10,17 @@ describe "tests sobre alumnos" {
 	var parcialDificil
 
 	fixture {
-		estudioso = new Alumno() vagoQueLeFueBien = new Alumno()
-		vagoQueLeFueBien.criterioParaEstudiar(new Vago())
+		estudioso = new Alumno() 
+		vagoQueLeFueBien = new Alumno(criterioParaEstudiar = new Vago())
 		vagoQueLeFueBien.rendir(9)
 
-		vagoQueLeFueMal = new Alumno()
-		vagoQueLeFueMal.criterioParaEstudiar(new Vago())
+		vagoQueLeFueMal = new Alumno(criterioParaEstudiar = new Vago())
 		vagoQueLeFueMal.rendir(2)
 
-		hijoDelRigor = new Alumno()
-		hijoDelRigor.criterioParaEstudiar(new HijoDelRigor())
+		hijoDelRigor = new Alumno(criterioParaEstudiar = new HijoDelRigor())
 
-		parcialFacil = new Parcial(3) parcialDificil = new Parcial(8)
+		parcialFacil = new Parcial(3) 
+		parcialDificil = new Parcial(8)
 	}
 
 	test "un alumno estudioso estudia siempre" {

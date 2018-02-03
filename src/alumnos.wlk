@@ -12,11 +12,7 @@ class HijoDelRigor {
 
 class Alumno {
 	const notas = []
-	var criterioParaEstudiar = new Estudioso()
-	
-	method criterioParaEstudiar(_criterio) {
-		criterioParaEstudiar = _criterio
-	}
+	var property criterioParaEstudiar = new Estudioso()
 	
 	method rendir(_nota) {
 		notas.add(_nota)
