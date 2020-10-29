@@ -1,36 +1,30 @@
-class Estudioso {
-	method estudiaPara(_parcial, _alumno) = true
-}
-
-class Vago {
-	method estudiaPara(_parcial, _alumno) = _alumno.notaUltimoExamen() < 4
-}
-
-class HijoDelRigor {
-	method estudiaPara(_parcial, _alumno) = _parcial.cantidadPreguntas() > 5
-}
-
 class Alumno {
 	const notas = []
-	var property criterioParaEstudiar = new Estudioso()
+	var tipoAlumno = estudioso
 	
-	method rendir(_nota) {
-		notas.add(_nota)
+	method rendir(nota) {
+		notas.add(nota)
 	}
-	
-	method estudiaPara(_parcial) = criterioParaEstudiar.estudiaPara(_parcial, self)
-	
-	method notaUltimoExamen() = notas.last()
+	method aproboUltimoExamen() = notas.last() >= 6
+	method estudiaPara(parcial) = tipoAlumno.estudia(self, parcial)
+}
+
+object estudioso {
+	method estudia(alumno, parcial) = true
+}
+
+object vago {
+	method estudia(alumno, parcial) = !alumno.aproboUltimoExamen()
+}
+
+object hijoDelRigor {
+	method estudia(alumno, parcial) = parcial.esDificil()
 }
 
 class Parcial {
-	var cantidadPreguntas
-	
-	constructor(_cantidadPreguntas) {
-		cantidadPreguntas = _cantidadPreguntas
-	}
-	
-	method cantidadPreguntas() = cantidadPreguntas
-	
+	const property cantidadPreguntas
 	method esDificil() = cantidadPreguntas > 5
 }
+
+
+

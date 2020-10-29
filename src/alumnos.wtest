@@ -2,45 +2,41 @@ import alumnos.*
 
 describe "tests sobre alumnos" {
 	
-	var estudioso
-	var vagoQueLeFueBien
-	var vagoQueLeFueMal
-	var hijoDelRigor
-	var parcialFacil
-	var parcialDificil
-
-	fixture {
-		estudioso = new Alumno() 
-		vagoQueLeFueBien = new Alumno(criterioParaEstudiar = new Vago())
-		vagoQueLeFueBien.rendir(9)
-
-		vagoQueLeFueMal = new Alumno(criterioParaEstudiar = new Vago())
-		vagoQueLeFueMal.rendir(2)
-
-		hijoDelRigor = new Alumno(criterioParaEstudiar = new HijoDelRigor())
-
-		parcialFacil = new Parcial(3) 
-		parcialDificil = new Parcial(8)
-	}
-
 	test "un alumno estudioso estudia siempre" {
-		assert.that(estudioso.estudiaPara(parcialFacil))
+		const estudioso = new Alumno()
+		const parcial = new Parcial(cantidadPreguntas = 5)
+
+		assert.that(estudioso.estudiaPara(parcial))
 	}
 
 	test "un alumno vago no estudia si le fue bien" {
-		assert.notThat(vagoQueLeFueBien.estudiaPara(parcialDificil))
+		const vagoQueLeFueBien = new Alumno(tipoAlumno = vago)
+		vagoQueLeFueBien.rendir(9)
+		const parcial = new Parcial(cantidadPreguntas = 5) 
+
+		assert.notThat(vagoQueLeFueBien.estudiaPara(parcial))
 	}
 
 	test "un alumno vago estudia si le fue mal" {
-		assert.that(vagoQueLeFueMal.estudiaPara(parcialFacil))
+		const vagoQueLeFueMal = new Alumno(tipoAlumno = vago)
+		vagoQueLeFueMal.rendir(2)
+		const parcial = new Parcial(cantidadPreguntas = 5)
+
+		assert.that(vagoQueLeFueMal.estudiaPara(parcial))
 	}
 
 	test "un alumno hijo del rigor no estudia para un parcial facil" {
-		assert.notThat(hijoDelRigor.estudiaPara(parcialFacil))
+		const alumnoHijoDelRigor = new Alumno(tipoAlumno = hijoDelRigor)
+		const parcialFacil = new Parcial(cantidadPreguntas = 3) 
+
+		assert.notThat(alumnoHijoDelRigor.estudiaPara(parcialFacil))
 	}
 
 	test "un alumno hijo del rigor estudia para un parcial dificil" {
-		assert.that(hijoDelRigor.estudiaPara(parcialDificil))
+		const alumnoHijoDelRigor = new Alumno(tipoAlumno = hijoDelRigor)
+		const parcialDificil = new Parcial(cantidadPreguntas = 8)
+
+		assert.that(alumnoHijoDelRigor.estudiaPara(parcialDificil))
 	}
 
 }
