@@ -1,6 +1,6 @@
 class Alumno {
 	const notas = []
-	var tipoAlumno = estudioso
+	var property tipoAlumno = estudioso
 	
 	method rendir(nota) {
 		notas.add(nota)

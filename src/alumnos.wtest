@@ -3,10 +3,10 @@ import alumnos.*
 describe "tests sobre alumnos" {
 	
 	test "un alumno estudioso estudia siempre" {
-		const estudioso = new Alumno()
+		const alumnoEstudioso = new Alumno()
 		const parcial = new Parcial(cantidadPreguntas = 5)
 
-		assert.that(estudioso.estudiaPara(parcial))
+		assert.that(alumnoEstudioso.estudiaPara(parcial))
 	}
 
 	test "un alumno vago no estudia si le fue bien" {
