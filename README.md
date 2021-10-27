@@ -1,6 +1,6 @@
 # Alumnos
  
-[![Build Status](https://travis-ci.org/wollok/cohesionAlumnos.svg?branch=master)](https://travis-ci.org/wollok/cohesionAlumnos)
+[![build](https://github.com/wollok/cohesionAlumnos/actions/workflows/build.yml/badge.svg)](https://github.com/wollok/cohesionAlumnos/actions/workflows/build.yml)
 
 
 <img src="img/student.png" height="150" width="150">
