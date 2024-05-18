@@ -1,7 +1,6 @@
 # Alumnos
  
-[![build](https://github.com/wollok/cohesionAlumnos/actions/workflows/build.yml/badge.svg)](https://github.com/wollok/cohesionAlumnos/actions/workflows/build.yml)
-
+[![build](https://github.com/wollok/cohesionAlumnos/actions/workflows/ci.yml/badge.svg)](https://github.com/wollok/cohesionAlumnos/actions/workflows/ci.yml)
 
 <img src="img/student.png" height="150" width="150">
 
